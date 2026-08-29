@@ -3,772 +3,130 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="theme-color" content="#050505">
+<meta name="description" content="RICHER 3D — pièces imprimées en 3D, design technique et fabrication sur mesure.">
 <title>RICHER 3D — Design. Print. Engineered.</title>
-
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #050505;
-  color: white;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* NAVBAR */
-
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 64px;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 7%;
-  background: rgba(5,5,5,.7);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid #222;
-}
-
-.logo {
-  font-weight: 800;
-  letter-spacing: .15em;
-  font-size: 14px;
-}
-
-.navlinks {
-  display: flex;
-  gap: 30px;
-  color: #aaa;
-  font-size: 13px;
-}
-
-.navlinks a:hover {
-  color: white;
-}
-
-/* HERO */
-
-.hero {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 120px 7%;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, #333, transparent 65%);
-  opacity: .5;
-  animation: glow 5s infinite alternate;
-}
-
-@keyframes glow {
-  from {
-    transform: scale(.8);
-  }
-
-  to {
-    transform: scale(1.2);
-  }
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-.kicker {
-  color: #999;
-  text-transform: uppercase;
-  letter-spacing: .2em;
-  font-size: 12px;
-  margin-bottom: 25px;
-}
-
-h1 {
-  font-size: clamp(60px, 11vw, 140px);
-  line-height: .85;
-  letter-spacing: -.07em;
-}
-
-.gradient {
-  background: linear-gradient(
-    90deg,
-    white,
-    #777,
-    white
-  );
-  background-size: 200%;
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  animation: shine 6s linear infinite;
-}
-
-@keyframes shine {
-  to {
-    background-position: 200%;
-  }
-}
-
-.hero p {
-  max-width: 600px;
-  margin: 30px auto;
-  color: #999;
-  line-height: 1.6;
-  font-size: 18px;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-.btn {
-  padding: 14px 22px;
-  border-radius: 999px;
-  border: 1px solid #444;
-  font-size: 14px;
-  transition: .3s;
-}
-
-.btn:hover {
-  transform: translateY(-4px);
-}
-
-.primary {
-  background: white;
-  color: black;
-  border-color: white;
-}
-
-/* SECTIONS */
-
-section {
-  padding: 120px 7%;
-  max-width: 1300px;
-  margin: auto;
-}
-
-.eyebrow {
-  color: #777;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: .18em;
-  margin-bottom: 15px;
-}
-
-.title {
-  font-size: clamp(45px, 7vw, 80px);
-  letter-spacing: -.06em;
-  line-height: .95;
-}
-
-.sub {
-  color: #999;
-  max-width: 650px;
-  line-height: 1.6;
-  margin-top: 25px;
-}
-
-/* 3D OBJECT */
-
-.tech {
-  margin-top: 60px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.visual {
-  height: 520px;
-  border: 1px solid #222;
-  border-radius: 30px;
-  display: grid;
-  place-items: center;
-  background: radial-gradient(circle, #222, #050505 70%);
-  overflow: hidden;
-}
-
-.object {
-  width: 210px;
-  height: 210px;
-  border: 2px solid #ddd;
-  border-radius: 30px;
-  transform: rotateX(60deg) rotateZ(45deg);
-  box-shadow:
-    35px 35px 0 #222,
-    0 0 80px #444;
-  animation: float 5s ease-in-out infinite;
-}
-
-@keyframes float {
-  50% {
-    transform:
-      rotateX(60deg)
-      rotateZ(45deg)
-      translateY(-25px);
-  }
-}
-
-/* STATS */
-
-.stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-}
-
-.stat {
-  border: 1px solid #222;
-  border-radius: 25px;
-  padding: 30px;
-  background: #0c0c0e;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.number {
-  font-size: 45px;
-  letter-spacing: -.05em;
-}
-
-.label {
-  color: #888;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-/* CARDS */
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 15px;
-  margin-top: 55px;
-}
-
-.card {
-  border: 1px solid #222;
-  border-radius: 25px;
-  padding: 30px;
-  min-height: 280px;
-  background: #0c0c0e;
-  transition: .3s;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  border-color: #555;
-}
-
-.icon {
-  font-size: 38px;
-}
-
-.card h3 {
-  font-size: 25px;
-  margin-bottom: 10px;
-}
-
-.card p {
-  color: #888;
-  line-height: 1.5;
-}
-
-/* PROCESS */
-
-.process {
-  margin-top: 60px;
-  border-left: 1px solid #333;
-}
-
-.step {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 25px;
-  padding: 35px;
-  border-bottom: 1px solid #222;
-}
-
-.step span {
-  color: #777;
-}
-
-.step h3 {
-  font-size: 27px;
-  margin-bottom: 8px;
-}
-
-.step p {
-  color: #888;
-  line-height: 1.5;
-}
-
-/* CONTACT */
-
-.contact {
-  text-align: center;
-}
-
-.contact .sub {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-footer {
-  padding: 35px 7%;
-  border-top: 1px solid #222;
-  color: #666;
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-}
-
-/* MOBILE */
-
-@media(max-width:800px) {
-
-  .navlinks {
-    display: none;
-  }
-
-  section {
-    padding: 90px 6%;
-  }
-
-  .tech {
-    grid-template-columns: 1fr;
-  }
-
-  .cards {
-    grid-template-columns: 1fr;
-  }
-
-  .visual {
-    height: 380px;
-  }
-
-  .hero p {
-    font-size: 16px;
-  }
-
-  .stats {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .step {
-    grid-template-columns: 45px 1fr;
-    padding: 30px 15px;
-  }
-}
+:root{--bg:#050505;--surface:#0d0d0f;--surface2:#131315;--fg:#f5f5f7;--muted:#96969d;--line:#252528;--soft:#55555b}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;background:var(--bg);color:var(--fg);overflow-x:hidden}body.lock{overflow:hidden}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}
+.nav{position:fixed;inset:0 0 auto;height:66px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:rgba(5,5,5,.7);backdrop-filter:blur(22px);border-bottom:1px solid rgba(255,255,255,.06)}.logo{font-size:14px;font-weight:800;letter-spacing:.16em}.menu-btn{width:44px;height:44px;border:1px solid #303033;border-radius:50%;background:rgba(255,255,255,.03);display:grid;place-items:center;cursor:pointer;font-size:21px;transition:.3s}.menu-btn:hover{background:#fff;color:#000;transform:scale(1.05)}
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:120px 6% 80px;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;width:800px;height:800px;background:radial-gradient(circle,rgba(255,255,255,.13),transparent 66%);animation:orb 7s ease-in-out infinite}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 96%,#050505);pointer-events:none}@keyframes orb{50%{transform:scale(1.2);opacity:.65}}.hero-content{position:relative;z-index:2}.eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#85858b}.hero h1{font-size:clamp(60px,11vw,145px);line-height:.84;letter-spacing:-.075em;margin:24px 0}.gradient{background:linear-gradient(105deg,#fff 15%,#777 50%,#fff 85%);background-size:220%;color:transparent;background-clip:text;-webkit-background-clip:text;animation:shine 7s linear infinite}@keyframes shine{to{background-position:220%}}.hero p{max-width:650px;margin:28px auto;color:var(--muted);font-size:18px;line-height:1.6}.buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border:1px solid #414145;border-radius:999px;font-size:14px;transition:.3s;cursor:pointer}.btn:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(255,255,255,.08)}.primary{background:#fff;color:#050505;border-color:#fff}
+.section{max-width:1320px;margin:auto;padding:120px 7%}.title{font-size:clamp(42px,7vw,82px);letter-spacing:-.06em;line-height:.95;margin-top:16px}.sub{max-width:700px;margin-top:24px;color:var(--muted);line-height:1.65}.hero-grid{margin-top:65px;display:grid;grid-template-columns:1.05fr .95fr;gap:18px}.visual{min-height:500px;border:1px solid var(--line);border-radius:32px;background:radial-gradient(circle at 50% 42%,#2a2a2e,#09090b 67%);display:grid;place-items:center;overflow:hidden;position:relative}.visual:before{content:"";position:absolute;width:80%;height:1px;background:#fff;opacity:.12;animation:scan 4s linear infinite}@keyframes scan{0%{top:12%}100%{top:88%}}.object{width:220px;height:220px;border:2px solid #ddd;border-radius:32px;transform:rotateX(58deg) rotateZ(45deg);box-shadow:35px 35px 0 #202024,0 0 90px rgba(255,255,255,.12);animation:float 5s ease-in-out infinite}@keyframes float{50%{transform:rotateX(58deg) rotateZ(45deg) translateY(-28px)}}.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}.stat{min-height:240px;padding:28px;border:1px solid var(--line);border-radius:26px;background:var(--surface);display:flex;flex-direction:column;justify-content:space-between}.num{font-size:44px;letter-spacing:-.05em}.label{font-size:13px;line-height:1.5;color:#808087}
+.collection-head{display:flex;justify-content:space-between;gap:30px;align-items:end}.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:40px}.filter{border:1px solid #303033;background:#0b0b0d;border-radius:999px;padding:10px 15px;color:#aaa;font-size:12px;cursor:pointer;transition:.25s}.filter.active,.filter:hover{background:#fff;color:#000;border-color:#fff}.products{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}.product{border:1px solid var(--line);border-radius:28px;overflow:hidden;background:var(--surface);transition:.4s;cursor:pointer}.product:hover{transform:translateY(-8px);border-color:#4b4b4f;box-shadow:0 25px 60px rgba(0,0,0,.35)}.product-img{height:290px;display:grid;place-items:center;background:radial-gradient(circle,#28282d,#0a0a0c 70%);position:relative;overflow:hidden}.product-img:after{content:"";position:absolute;width:160%;height:2px;background:linear-gradient(90deg,transparent,#fff,transparent);opacity:.12;transform:rotate(-18deg) translateX(-50%);transition:.6s}.product:hover .product-img:after{transform:rotate(-18deg) translateX(25%)}.part{width:145px;height:105px;border:2px solid #bdbdc2;border-radius:22px 22px 35px 35px;box-shadow:inset 0 0 0 20px #111,0 25px 50px #000;transform:perspective(450px) rotateX(55deg);transition:.5s}.product:hover .part{transform:perspective(450px) rotateX(55deg) scale(1.08) translateY(-8px)}.product-info{padding:23px}.tag{display:inline-block;border:1px solid #3a3a3d;border-radius:999px;padding:6px 9px;color:#999;font-size:10px;letter-spacing:.12em;text-transform:uppercase}.product h3{font-size:24px;letter-spacing:-.035em;margin:14px 0 7px}.product p{font-size:13px;color:#888;line-height:1.5}.product-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:20px}.price{font-size:19px}.arrow{color:#999}
+.process{margin-top:55px;border-left:1px solid #333}.step{display:grid;grid-template-columns:75px 1fr;gap:20px;padding:34px 25px;border-bottom:1px solid var(--line)}.step span{color:#666;font-size:12px}.step h3{font-size:27px;margin-bottom:8px}.step p{color:#888;line-height:1.5}.contact{text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:radial-gradient(circle at center,#101012,#050505 55%)}.contact .sub{margin-left:auto;margin-right:auto}.footer{padding:30px 7%;display:flex;justify-content:space-between;color:#626267;font-size:12px}
+/* Drawer */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.58);backdrop-filter:blur(7px);z-index:90;opacity:0;pointer-events:none;transition:.45s}.overlay.show{opacity:1;pointer-events:auto}.drawer{position:fixed;top:0;right:0;width:min(460px,92vw);height:100vh;z-index:100;background:rgba(12,12,14,.96);backdrop-filter:blur(30px);border-left:1px solid #303033;padding:100px 42px 35px;transform:translateX(105%);transition:transform .55s cubic-bezier(.16,1,.3,1);overflow:auto}.drawer.show{transform:translateX(0)}.close{position:absolute;top:22px;right:25px;width:44px;height:44px;border:1px solid #333;border-radius:50%;background:transparent;font-size:30px;line-height:1;cursor:pointer}.drawer-brand{font-size:25px;font-weight:800;letter-spacing:.12em;margin-bottom:58px}.menu-label{color:#666;font-size:10px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px}.menu-link{display:flex;align-items:center;justify-content:space-between;padding:20px 0;border-bottom:1px solid #242427;font-size:20px;transition:.25s}.menu-link:hover{padding-left:10px;color:#aaa}.menu-link span{color:#666}.drawer-note{margin-top:45px;padding:20px;border:1px solid #28282b;border-radius:20px;color:#777;font-size:12px;line-height:1.6}
+/* Product modal */
+.modal{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:20px;background:rgba(0,0,0,.7);backdrop-filter:blur(12px);opacity:0;pointer-events:none;transition:.35s}.modal.show{opacity:1;pointer-events:auto}.modal-card{width:min(920px,100%);max-height:90vh;overflow:auto;background:#0c0c0e;border:1px solid #333;border-radius:30px;display:grid;grid-template-columns:1fr 1fr;transform:translateY(25px) scale(.98);transition:.4s}.modal.show .modal-card{transform:none}.modal-art{min-height:500px;display:grid;place-items:center;background:radial-gradient(circle,#28282c,#09090b 70%)}.modal-art .part{width:220px;height:160px}.modal-info{padding:45px}.modal-info h2{font-size:45px;letter-spacing:-.05em;margin:15px 0}.modal-info p{color:#888;line-height:1.6}.close-modal{float:right;border:1px solid #333;background:transparent;border-radius:50%;width:40px;height:40px;font-size:25px;cursor:pointer}.detail-list{margin:28px 0;border-top:1px solid #28282b}.detail{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #28282b;font-size:13px}.detail span:first-child{color:#777}.modal-price{font-size:27px;margin:25px 0}
+.reveal{opacity:0;transform:translateY(35px);transition:.8s ease}.reveal.show{opacity:1;transform:none}
+@media(max-width:850px){.section{padding:90px 6%}.hero-grid,.modal-card{grid-template-columns:1fr}.visual{min-height:380px}.products{grid-template-columns:1fr 1fr}.nav{padding:0 5%}.drawer{padding-left:30px;padding-right:30px}.modal-art{min-height:320px}.modal-info{padding:30px}.modal-info h2{font-size:36px}.collection-head{display:block}}
+@media(max-width:560px){.hero h1{font-size:62px}.hero p{font-size:16px}.products{grid-template-columns:1fr}.stats{gap:9px}.stat{min-height:190px;padding:20px}.num{font-size:35px}.product-img{height:260px}.drawer{width:94vw}.step{grid-template-columns:45px 1fr;padding:28px 14px}.footer{gap:12px;flex-direction:column}}
 </style>
 </head>
-
 <body>
-
-<nav>
-
-<div class="logo">
-RICHER 3D
-</div>
-
-<div class="navlinks">
-
-<a href="#tech">Technologie</a>
-
-<a href="#products">Pièces</a>
-
-<a href="#process">Process</a>
-
-<a href="#contact">Projet</a>
-
-</div>
-
+<nav class="nav">
+  <a class="logo" href="#">RICHER 3D</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu">☰</button>
 </nav>
 
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <button class="close" id="closeMenu" aria-label="Fermer">×</button>
+  <div class="drawer-brand">RICHER 3D</div>
+  <div class="menu-label">Collection</div>
+  <a class="menu-link" href="#products" data-filter="moto">🏍️ MOTO <span>→</span></a>
+  <a class="menu-link" href="#products" data-filter="scooter">🛵 SCOOTER <span>→</span></a>
+  <a class="menu-link" href="#products" data-filter="velo">🚲 VÉLO <span>→</span></a>
+  <a class="menu-link" href="#products" data-filter="tech">⚙️ TECHNIQUE <span>→</span></a>
+  <a class="menu-link" href="#contact">🧩 SUR MESURE <span>→</span></a>
+  <div class="menu-label" style="margin-top:48px">RICHER 3D</div>
+  <a class="menu-link" href="#process">Notre process <span>→</span></a>
+  <a class="menu-link" href="#contact">Contact <span>→</span></a>
+  <div class="drawer-note">Des pièces pensées pour de vrais projets. Conçues, optimisées et imprimées localement.</div>
+</aside>
 
 <header class="hero">
-
-<div class="hero-content">
-
-<div class="kicker">
-Design • Engineering • 3D Printing
-</div>
-
-<h1>
-Une idée.<br>
-<span class="gradient">
-Une pièce.
-</span>
-</h1>
-
-<p>
-Je transforme des idées en pièces physiques —
-conçues, optimisées et imprimées en 3D.
-</p>
-
-<div class="buttons">
-
-<a class="btn primary" href="#products">
-Voir les pièces
-</a>
-
-<a class="btn" href="#contact">
-Créer ma pièce →
-</a>
-
-</div>
-
-</div>
-
+  <div class="hero-content">
+    <div class="eyebrow">Design • Engineering • 3D Printing</div>
+    <h1>Une idée.<br><span class="gradient">Une pièce.</span></h1>
+    <p>Je transforme des idées en pièces physiques — conçues, optimisées et imprimées en 3D avec une approche technique.</p>
+    <div class="buttons"><a class="btn primary" href="#products">Explorer la collection</a><a class="btn" href="#contact">Créer ma pièce →</a></div>
+  </div>
 </header>
 
-
-<section id="tech">
-
-<div class="eyebrow">
-01 — Technologie
-</div>
-
-<div class="title">
-Pas juste imprimé.<br>
-<span style="color:#777">
-Ingénieré.
-</span>
-</div>
-
-<p class="sub">
-Chaque modèle commence comme une idée numérique.
-Géométrie, tolérances, orientation et matériau sont
-pensés pour obtenir une pièce propre et fonctionnelle.
-</p>
-
-<div class="tech">
-
-<div class="visual">
-
-<div class="object"></div>
-
-</div>
-
-<div class="stats">
-
-<div class="stat">
-
-<div class="number">
-0.2 mm
-</div>
-
-<div class="label">
-Hauteur de couche typique pour les prototypes rapides.
-</div>
-
-</div>
-
-<div class="stat">
-
-<div class="number">
-CAD
-</div>
-
-<div class="label">
-Conception paramétrique et géométrie sur mesure.
-</div>
-
-</div>
-
-<div class="stat">
-
-<div class="number">
-24/7
-</div>
-
-<div class="label">
-Possibilité d'itérer un design encore et encore.
-</div>
-
-</div>
-
-<div class="stat">
-
-<div class="number">
-∞
-</div>
-
-<div class="label">
-Possibilités de prototypes et pièces personnalisées.
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+<section class="section reveal" id="tech">
+  <div class="eyebrow">01 — Technologie</div>
+  <div class="title">Pas juste imprimé.<br><span style="color:#777">Ingénieré.</span></div>
+  <p class="sub">Chaque modèle commence comme une idée numérique. Géométrie, tolérances, orientation et matériau sont pensés pour obtenir une pièce propre et fonctionnelle.</p>
+  <div class="hero-grid">
+    <div class="visual"><div class="object"></div></div>
+    <div class="stats">
+      <div class="stat"><div class="num">0.2<span style="font-size:20px"> mm</span></div><div class="label">Hauteur de couche typique pour les prototypes rapides.</div></div>
+      <div class="stat"><div class="num">CAD</div><div class="label">Conception paramétrique et géométrie sur mesure.</div></div>
+      <div class="stat"><div class="num">24/7</div><div class="label">Possibilité d'itérer un design encore et encore.</div></div>
+      <div class="stat"><div class="num">∞</div><div class="label">Possibilités de prototypes et pièces personnalisées.</div></div>
+    </div>
+  </div>
 </section>
 
-
-<section id="products">
-
-<div class="eyebrow">
-02 — Collection
-</div>
-
-<div class="title">
-Des pièces qui<br>
-<span style="color:#777">
-servent à quelque chose.
-</span>
-</div>
-
-<p class="sub">
-Une sélection de produits qui peut évoluer avec tes demandes.
-</p>
-
-
-<div class="cards">
-
-<div class="card">
-
-<div class="icon">
-⚙️
-</div>
-
-<div>
-
-<h3>
-Pièces techniques
-</h3>
-
-<p>
-Supports, adaptateurs, caches et composants conçus autour de tes dimensions.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">
-🏍️
-</div>
-
-<div>
-
-<h3>
-Moto / mobilité
-</h3>
-
-<p>
-Accessoires personnalisés pour véhicules, vélos et projets mécaniques.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">
-🧩
-</div>
-
-<div>
-
-<h3>
-Sur mesure
-</h3>
-
-<p>
-Tu donnes l'idée, les dimensions ou un croquis.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
+<section class="section reveal" id="products">
+  <div class="collection-head"><div><div class="eyebrow">02 — Collection</div><div class="title">Des pièces qui<br><span style="color:#777">servent à quelque chose.</span></div></div><p class="sub">Explore les premières catégories. Les produits sont des exemples prêts à être remplacés par tes vraies créations.</p></div>
+  <div class="filter-row">
+    <button class="filter active" data-filter="all">Tout</button><button class="filter" data-filter="moto">Moto</button><button class="filter" data-filter="scooter">Scooter</button><button class="filter" data-filter="velo">Vélo</button><button class="filter" data-filter="tech">Technique</button>
+  </div>
+  <div class="products" id="productGrid">
+    <article class="product" data-category="moto" data-name="Cache moteur RICHER 001" data-price="29,99 $" data-material="PETG / PLA" data-use="Projet moto" data-description="Cache et élément de finition conçu pour un projet mécanique. Personnalisable selon tes dimensions."><div class="product-img"><div class="part"></div></div><div class="product-info"><span class="tag">Moto</span><h3>Cache moteur RICHER 001</h3><p>Design technique • finition propre</p><div class="product-bottom"><span class="price">29,99 $</span><span class="arrow">Voir →</span></div></div></article>
+    <article class="product" data-category="scooter" data-name="Support cockpit RICHER 002" data-price="24,99 $" data-material="PETG" data-use="Scooter" data-description="Support compact pour intégrer un accessoire au cockpit. Design adaptable à ton montage."><div class="product-img"><div class="part" style="transform:perspective(450px) rotateX(55deg) rotateZ(10deg)"></div></div><div class="product-info"><span class="tag">Scooter</span><h3>Support cockpit 002</h3><p>Compact • robuste • personnalisable</p><div class="product-bottom"><span class="price">24,99 $</span><span class="arrow">Voir →</span></div></div></article>
+    <article class="product" data-category="velo" data-name="Support vélo RICHER 003" data-price="19,99 $" data-material="PLA / PETG" data-use="Vélo" data-description="Petit support léger pour vélo. Pensé pour être rapide à produire et simple à installer."><div class="product-img"><div class="part" style="border-radius:50%;width:155px;height:90px"></div></div><div class="product-info"><span class="tag">Vélo</span><h3>Support vélo 003</h3><p>Léger • minimaliste • fonctionnel</p><div class="product-bottom"><span class="price">19,99 $</span><span class="arrow">Voir →</span></div></div></article>
+    <article class="product" data-category="tech" data-name="Adaptateur technique 004" data-price="14,99 $" data-material="PLA / PETG" data-use="Projet technique" data-description="Adaptateur imprimé sur mesure pour connecter ou positionner deux éléments."><div class="product-img"><div class="part" style="width:120px;height:120px;border-radius:50%"></div></div><div class="product-info"><span class="tag">Technique</span><h3>Adaptateur 004</h3><p>Sur mesure • précis • compact</p><div class="product-bottom"><span class="price">14,99 $</span><span class="arrow">Voir →</span></div></div></article>
+    <article class="product" data-category="moto" data-name="Support plaque RICHER 005" data-price="34,99 $" data-material="PETG" data-use="Moto" data-description="Prototype de support orienté style et intégration. Dimensions à confirmer selon le véhicule."><div class="product-img"><div class="part" style="width:190px;height:80px;border-radius:12px"></div></div><div class="product-info"><span class="tag">Moto</span><h3>Support plaque 005</h3><p>Style • intégration • prototype</p><div class="product-bottom"><span class="price">34,99 $</span><span class="arrow">Voir →</span></div></div></article>
+    <article class="product" data-category="tech" data-name="Pièce personnalisée 006" data-price="Sur devis" data-material="Selon besoin" data-use="Sur mesure" data-description="Tu fournis une idée, une photo ou des dimensions. On transforme le concept en pièce imprimable."><div class="product-img"><div class="part" style="width:170px;height:140px;transform:perspective(450px) rotateX(55deg) rotateZ(25deg)"></div></div><div class="product-info"><span class="tag">Sur mesure</span><h3>Pièce personnalisée 006</h3><p>Ton idée • ton design • ta pièce</p><div class="product-bottom"><span class="price">Sur devis</span><span class="arrow">Voir →</span></div></div></article>
+  </div>
 </section>
 
-
-<section id="process">
-
-<div class="eyebrow">
-03 — Process
-</div>
-
-<div class="title">
-De l'idée<br>
-à la matière.
-</div>
-
-<div class="process">
-
-<div class="step">
-
-<span>
-01
-</span>
-
-<div>
-
-<h3>
-Concept
-</h3>
-
-<p>
-On définit ce que la pièce doit faire,
-ses dimensions et ses contraintes.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="step">
-
-<span>
-02
-</span>
-
-<div>
-
-<h3>
-Modélisation
-</h3>
-
-<p>
-La géométrie est construite en CAD puis ajustée pour l'impression.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="step">
-
-<span>
-03
-</span>
-
-<div>
-
-<h3>
-Fabrication
-</h3>
-
-<p>
-Le modèle est préparé, imprimé et contrôlé.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="step">
-
-<span>
-04
-</span>
-
-<div>
-
-<h3>
-Iteration
-</h3>
-
-<p>
-On améliore le design jusqu'à obtenir le résultat recherché.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
+<section class="section reveal" id="process">
+  <div class="eyebrow">03 — Process</div><div class="title">De l'idée<br>à la matière.</div>
+  <div class="process">
+    <div class="step"><span>01</span><div><h3>Concept</h3><p>On définit ce que la pièce doit faire, ses dimensions et ses contraintes.</p></div></div>
+    <div class="step"><span>02</span><div><h3>Modélisation</h3><p>La géométrie est construite en CAD puis ajustée pour l'impression.</p></div></div>
+    <div class="step"><span>03</span><div><h3>Fabrication</h3><p>Le modèle est préparé, imprimé et contrôlé avant la remise de la pièce.</p></div></div>
+    <div class="step"><span>04</span><div><h3>Iteration</h3><p>On améliore le design jusqu'à obtenir le résultat recherché.</p></div></div>
+  </div>
 </section>
 
-
-<section id="contact" class="contact">
-
-<div class="eyebrow">
-04 — Ton projet
-</div>
-
-<div class="title">
-Tu as une idée ?<br>
-
-<span style="color:#777">
-Fais-la exister.
-</span>
-
-</div>
-
-<p class="sub">
-Envoie-moi une description, une photo ou un croquis
-de ce que tu veux fabriquer.
-</p>
-
-<br>
-
-<div class="buttons">
-
-<a class="btn primary" href="mailto:TONEMAIL@EXEMPLE.COM">
-Parler de mon projet →
-</a>
-
-</div>
-
+<section class="section contact reveal" id="contact">
+  <div class="eyebrow">04 — Ton projet</div><div class="title">Tu as une idée ?<br><span style="color:#777">Fais-la exister.</span></div>
+  <p class="sub">Envoie-moi une description, une photo ou un croquis de ce que tu veux fabriquer.</p><br>
+  <div class="buttons"><a class="btn primary" href="mailto:TONEMAIL@EXEMPLE.COM?subject=Projet%20RICHER%203D">Parler de mon projet →</a></div>
 </section>
+<footer class="footer"><span>© 2026 RICHER 3D</span><span>Designed & printed locally.</span></footer>
 
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-card">
+    <div class="modal-art"><div class="part" id="modalPart"></div></div>
+    <div class="modal-info">
+      <button class="close-modal" id="closeModal">×</button><span class="tag" id="modalTag">Produit</span>
+      <h2 id="modalTitle">Produit</h2><p id="modalDescription"></p>
+      <div class="detail-list"><div class="detail"><span>Matériau</span><span id="modalMaterial">—</span></div><div class="detail"><span>Application</span><span id="modalUse">—</span></div><div class="detail"><span>Fabrication</span><span>Impression 3D</span></div></div>
+      <div class="modal-price" id="modalPrice">—</div>
+      <a class="btn primary" id="orderLink" href="mailto:TONEMAIL@EXEMPLE.COM?subject=Commande%20RICHER%203D">Demander cette pièce →</a>
+    </div>
+  </div>
+</div>
 
-<footer>
-
-<span>
-© 2026 RICHER 3D
-</span>
-
-<span>
-Designed & printed locally.
-</span>
-
-</footer>
-
+<script>
+const drawer=document.getElementById('drawer'),overlay=document.getElementById('overlay'),menuBtn=document.getElementById('menuBtn'),closeMenu=document.getElementById('closeMenu');
+function openMenu(){drawer.classList.add('show');overlay.classList.add('show');document.body.classList.add('lock');drawer.setAttribute('aria-hidden','false')}
+function closeDrawer(){drawer.classList.remove('show');overlay.classList.remove('show');document.body.classList.remove('lock');drawer.setAttribute('aria-hidden','true')}
+menuBtn.addEventListener('click',openMenu);closeMenu.addEventListener('click',closeDrawer);overlay.addEventListener('click',closeDrawer);document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer()});
+const filters=document.querySelectorAll('.filter'), products=document.querySelectorAll('.product');
+function filterProducts(category){filters.forEach(f=>f.classList.toggle('active',f.dataset.filter===category));products.forEach(p=>{p.style.display=(category==='all'||p.dataset.category===category)?'block':'none'});document.getElementById('products').scrollIntoView({behavior:'smooth',block:'start'})}
+filters.forEach(f=>f.addEventListener('click',()=>filterProducts(f.dataset.filter)));
+document.querySelectorAll('.menu-link[data-filter]').forEach(link=>link.addEventListener('click',()=>{const c=link.dataset.filter;closeDrawer();setTimeout(()=>filterProducts(c),120)}));
+const modal=document.getElementById('modal'),closeModal=document.getElementById('closeModal');
+function openProduct(p){document.getElementById('modalTag').textContent=p.querySelector('.tag').textContent;document.getElementById('modalTitle').textContent=p.dataset.name;document.getElementById('modalDescription').textContent=p.dataset.description;document.getElementById('modalMaterial').textContent=p.dataset.material;document.getElementById('modalUse').textContent=p.dataset.use;document.getElementById('modalPrice').textContent=p.dataset.price;document.getElementById('orderLink').href='mailto:TONEMAIL@EXEMPLE.COM?subject='+encodeURIComponent('Commande — '+p.dataset.name);modal.classList.add('show');document.body.classList.add('lock')}
+products.forEach(p=>p.addEventListener('click',()=>openProduct(p)));function closeProduct(){modal.classList.remove('show');document.body.classList.remove('lock')}closeModal.addEventListener('click',closeProduct);modal.addEventListener('click',e=>{if(e.target===modal)closeProduct()});
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
 </body>
 </html>
