@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>RICHER 3D — Design. Print. Engineered.</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #050505;
+  color: white;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* NAVBAR */
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 64px;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 7%;
+  background: rgba(5,5,5,.7);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid #222;
+}
+
+.logo {
+  font-weight: 800;
+  letter-spacing: .15em;
+  font-size: 14px;
+}
+
+.navlinks {
+  display: flex;
+  gap: 30px;
+  color: #aaa;
+  font-size: 13px;
+}
+
+.navlinks a:hover {
+  color: white;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 120px 7%;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, #333, transparent 65%);
+  opacity: .5;
+  animation: glow 5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    transform: scale(.8);
+  }
+
+  to {
+    transform: scale(1.2);
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.kicker {
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-size: clamp(60px, 11vw, 140px);
+  line-height: .85;
+  letter-spacing: -.07em;
+}
+
+.gradient {
+  background: linear-gradient(
+    90deg,
+    white,
+    #777,
+    white
+  );
+  background-size: 200%;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shine 6s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200%;
+  }
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 30px auto;
+  color: #999;
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.btn {
+  padding: 14px 22px;
+  border-radius: 999px;
+  border: 1px solid #444;
+  font-size: 14px;
+  transition: .3s;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+}
+
+.primary {
+  background: white;
+  color: black;
+  border-color: white;
+}
+
+/* SECTIONS */
+
+section {
+  padding: 120px 7%;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.eyebrow {
+  color: #777;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  margin-bottom: 15px;
+}
+
+.title {
+  font-size: clamp(45px, 7vw, 80px);
+  letter-spacing: -.06em;
+  line-height: .95;
+}
+
+.sub {
+  color: #999;
+  max-width: 650px;
+  line-height: 1.6;
+  margin-top: 25px;
+}
+
+/* 3D OBJECT */
+
+.tech {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.visual {
+  height: 520px;
+  border: 1px solid #222;
+  border-radius: 30px;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle, #222, #050505 70%);
+  overflow: hidden;
+}
+
+.object {
+  width: 210px;
+  height: 210px;
+  border: 2px solid #ddd;
+  border-radius: 30px;
+  transform: rotateX(60deg) rotateZ(45deg);
+  box-shadow:
+    35px 35px 0 #222,
+    0 0 80px #444;
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% {
+    transform:
+      rotateX(60deg)
+      rotateZ(45deg)
+      translateY(-25px);
+  }
+}
+
+/* STATS */
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.stat {
+  border: 1px solid #222;
+  border-radius: 25px;
+  padding: 30px;
+  background: #0c0c0e;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.number {
+  font-size: 45px;
+  letter-spacing: -.05em;
+}
+
+.label {
+  color: #888;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* CARDS */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 15px;
+  margin-top: 55px;
+}
+
+.card {
+  border: 1px solid #222;
+  border-radius: 25px;
+  padding: 30px;
+  min-height: 280px;
+  background: #0c0c0e;
+  transition: .3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: #555;
+}
+
+.icon {
+  font-size: 38px;
+}
+
+.card h3 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #888;
+  line-height: 1.5;
+}
+
+/* PROCESS */
+
+.process {
+  margin-top: 60px;
+  border-left: 1px solid #333;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 25px;
+  padding: 35px;
+  border-bottom: 1px solid #222;
+}
+
+.step span {
+  color: #777;
+}
+
+.step h3 {
+  font-size: 27px;
+  margin-bottom: 8px;
+}
+
+.step p {
+  color: #888;
+  line-height: 1.5;
+}
+
+/* CONTACT */
+
+.contact {
+  text-align: center;
+}
+
+.contact .sub {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer {
+  padding: 35px 7%;
+  border-top: 1px solid #222;
+  color: #666;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px) {
+
+  .navlinks {
+    display: none;
+  }
+
+  section {
+    padding: 90px 6%;
+  }
+
+  .tech {
+    grid-template-columns: 1fr;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .visual {
+    height: 380px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .step {
+    grid-template-columns: 45px 1fr;
+    padding: 30px 15px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+RICHER 3D
+</div>
+
+<div class="navlinks">
+
+<a href="#tech">Technologie</a>
+
+<a href="#products">Pièces</a>
+
+<a href="#process">Process</a>
+
+<a href="#contact">Projet</a>
+
+</div>
+
+</nav>
+
+
+<header class="hero">
+
+<div class="hero-content">
+
+<div class="kicker">
+Design • Engineering • 3D Printing
+</div>
+
+<h1>
+Une idée.<br>
+<span class="gradient">
+Une pièce.
+</span>
+</h1>
+
+<p>
+Je transforme des idées en pièces physiques —
+conçues, optimisées et imprimées en 3D.
+</p>
+
+<div class="buttons">
+
+<a class="btn primary" href="#products">
+Voir les pièces
+</a>
+
+<a class="btn" href="#contact">
+Créer ma pièce →
+</a>
+
+</div>
+
+</div>
+
+</header>
+
+
+<section id="tech">
+
+<div class="eyebrow">
+01 — Technologie
+</div>
+
+<div class="title">
+Pas juste imprimé.<br>
+<span style="color:#777">
+Ingénieré.
+</span>
+</div>
+
+<p class="sub">
+Chaque modèle commence comme une idée numérique.
+Géométrie, tolérances, orientation et matériau sont
+pensés pour obtenir une pièce propre et fonctionnelle.
+</p>
+
+<div class="tech">
+
+<div class="visual">
+
+<div class="object"></div>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+
+<div class="number">
+0.2 mm
+</div>
+
+<div class="label">
+Hauteur de couche typique pour les prototypes rapides.
+</div>
+
+</div>
+
+<div class="stat">
+
+<div class="number">
+CAD
+</div>
+
+<div class="label">
+Conception paramétrique et géométrie sur mesure.
+</div>
+
+</div>
+
+<div class="stat">
+
+<div class="number">
+24/7
+</div>
+
+<div class="label">
+Possibilité d'itérer un design encore et encore.
+</div>
+
+</div>
+
+<div class="stat">
+
+<div class="number">
+∞
+</div>
+
+<div class="label">
+Possibilités de prototypes et pièces personnalisées.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="products">
+
+<div class="eyebrow">
+02 — Collection
+</div>
+
+<div class="title">
+Des pièces qui<br>
+<span style="color:#777">
+servent à quelque chose.
+</span>
+</div>
+
+<p class="sub">
+Une sélection de produits qui peut évoluer avec tes demandes.
+</p>
+
+
+<div class="cards">
+
+<div class="card">
+
+<div class="icon">
+⚙️
+</div>
+
+<div>
+
+<h3>
+Pièces techniques
+</h3>
+
+<p>
+Supports, adaptateurs, caches et composants conçus autour de tes dimensions.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🏍️
+</div>
+
+<div>
+
+<h3>
+Moto / mobilité
+</h3>
+
+<p>
+Accessoires personnalisés pour véhicules, vélos et projets mécaniques.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🧩
+</div>
+
+<div>
+
+<h3>
+Sur mesure
+</h3>
+
+<p>
+Tu donnes l'idée, les dimensions ou un croquis.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="process">
+
+<div class="eyebrow">
+03 — Process
+</div>
+
+<div class="title">
+De l'idée<br>
+à la matière.
+</div>
+
+<div class="process">
+
+<div class="step">
+
+<span>
+01
+</span>
+
+<div>
+
+<h3>
+Concept
+</h3>
+
+<p>
+On définit ce que la pièce doit faire,
+ses dimensions et ses contraintes.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<span>
+02
+</span>
+
+<div>
+
+<h3>
+Modélisation
+</h3>
+
+<p>
+La géométrie est construite en CAD puis ajustée pour l'impression.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<span>
+03
+</span>
+
+<div>
+
+<h3>
+Fabrication
+</h3>
+
+<p>
+Le modèle est préparé, imprimé et contrôlé.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<span>
+04
+</span>
+
+<div>
+
+<h3>
+Iteration
+</h3>
+
+<p>
+On améliore le design jusqu'à obtenir le résultat recherché.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="contact" class="contact">
+
+<div class="eyebrow">
+04 — Ton projet
+</div>
+
+<div class="title">
+Tu as une idée ?<br>
+
+<span style="color:#777">
+Fais-la exister.
+</span>
+
+</div>
+
+<p class="sub">
+Envoie-moi une description, une photo ou un croquis
+de ce que tu veux fabriquer.
+</p>
+
+<br>
+
+<div class="buttons">
+
+<a class="btn primary" href="mailto:TONEMAIL@EXEMPLE.COM">
+Parler de mon projet →
+</a>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<span>
+© 2026 RICHER 3D
+</span>
+
+<span>
+Designed & printed locally.
+</span>
+
+</footer>
+
+</body>
+</html>
